@@ -1,0 +1,191 @@
+<robot name="TonyPi_facsimile">
+
+
+  <material name="Left">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+
+  <material name="Right">
+    <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+
+
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.1143 0.10795 0.1016"/>
+      </geometry>
+      <origin rpy="0 0 0"/>
+      <material name="Torso">
+        <color rgba="0.8 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="LFoot">
+    <visual>
+      <geometry>
+        <box size="0.0762 0.1143 0.0174625"/>
+      </geometry>
+      <origin rpy="0 0 0"/>
+      <material name="Left"/>
+    </visual>
+  </link>
+  <link name="LAnkle">
+    <visual>
+      <geometry>
+        <box size="0.0589 0.053975 0.047625"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.02025" />
+      <material name="Left"/>
+    </visual>
+  </link>
+  <link name="LShin">
+    <visual>
+      <geometry>
+        <box size="0.0572 0.0254 0.060325"/>
+      </geometry>
+      <origin rpy="-0.5236 0 0" xyz="0 -0.0127 -0.0301675" />
+      <material name="Left"/>
+    </visual>
+  </link>
+  <link name="LKnee">
+    <visual>
+      <geometry>
+        <box size="0.0568 0.0254 0.060325"/>
+      </geometry>
+      <origin rpy="0.5236 0 0" xyz="0 0.0127 -0.0301675"/>
+      <material name="Left"/>
+    </visual>
+  </link>
+  <link name="LHip">
+    <visual>
+      <geometry>
+        <box size="0.053975 0.053975 0.047625"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.0254"/>
+      <material name="Left"/>
+    </visual>
+  </link>
+  <link name="RFoot">
+    <visual>
+      <geometry>
+        <box size="0.0762 0.1143 0.0174625"/>
+      </geometry>
+      <origin rpy="0 0 0"/>
+      <material name="Right"/>
+    </visual>
+  </link>
+  <link name="RAnkle">
+    <visual>
+      <geometry>
+        <box size="0.0589 0.053975 0.047625"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.02025" />
+      <material name="Right"/>
+    </visual>
+  </link>
+  <link name="RShin">
+    <visual>
+      <geometry>
+        <box size="0.0572 0.0254 0.060325"/>
+      </geometry>
+      <origin rpy="-0.5236 0 0" xyz="0 -0.0127 -0.0301675" />
+      <material name="Right"/>
+    </visual>
+  </link>
+  <link name="RKnee">
+    <visual>
+      <geometry>
+        <box size="0.0568 0.0254 0.060325"/>
+      </geometry>
+      <origin rpy="0.5236 0 0" xyz="0 0.0127 -0.0301675"/>
+      <material name="Right"/>
+    </visual>
+  </link>
+  <link name="RHip">
+    <visual>
+      <geometry>
+        <box size="0.053975 0.053975 0.047625"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.0254"/>
+      <material name="Right"/>
+    </visual>
+  </link>
+
+
+  <joint name="LHip-Sideways" type="revolute">
+    <parent link="base_link"/>
+    <child link="LHip"/>
+    <axis xyz="0 1 0"/>
+    <origin rpy="0 0 0" xyz="0.0396875 0 -0.0508"/>
+    <limit effort="0.17" lower="2.356" upper="5.5" velocity="19.09"/>
+  </joint>
+  <joint name="LHip" type="revolute">
+    <parent link="LHip"/>
+    <child link="LKnee"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 -0.0508"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+  <joint name="LKnee" type="revolute">
+    <parent link="LKnee"/>
+    <child link="LShin"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0.0284 -0.0491"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+  <joint name="LAnkle" type="revolute">
+    <parent link="LShin"/>
+    <child link="LAnkle"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 -0.0284 -0.0491"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+  <joint name="LAnkle-Sideways" type="revolute">
+    <parent link="LAnkle"/>
+    <child link="LFoot"/>
+    <axis xyz="0 1 0"/>
+    <origin rpy="0 0 0" xyz="0.0127 0 -0.0508"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+
+  <joint name="RHip-Sideways" type="revolute">
+    <parent link="base_link"/>
+    <child link="RHip"/>
+    <axis xyz="0 1 0"/>
+    <origin rpy="0 0 0" xyz="-0.0396875 0 -0.0508"/>
+    <limit effort="0.17" lower="2.356" upper="5.5" velocity="19.09"/>
+  </joint>
+  <joint name="RHip" type="revolute">
+    <parent link="RHip"/>
+    <child link="RKnee"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 -0.0508"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+  <joint name="RKnee" type="revolute">
+    <parent link="RKnee"/>
+    <child link="RShin"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0.0284 -0.0491"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+  <joint name="RAnkle" type="revolute">
+    <parent link="RShin"/>
+    <child link="RAnkle"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 -0.0284 -0.0491"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+  <joint name="RAnkle-Sideways" type="revolute">
+    <parent link="RAnkle"/>
+    <child link="RFoot"/>
+    <axis xyz="0 1 0"/>
+    <origin rpy="0 0 0" xyz="-0.0127 0 -0.0508"/>
+    <limit effort="0.17" lower="3.14" upper="6.28" velocity="19.09"/>
+  </joint>
+
+
+</robot>

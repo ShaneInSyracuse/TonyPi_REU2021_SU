@@ -1,0 +1,8 @@
+prefix=/home/shane/TonyPi_ws/install
+
+Name: TonyPi
+Description: Description of TonyPi
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lTonyPi
+Requires: message_runtime roscpp rospy sensor_msgs std_msgs tf

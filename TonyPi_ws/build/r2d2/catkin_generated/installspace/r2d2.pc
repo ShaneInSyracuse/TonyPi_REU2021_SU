@@ -1,0 +1,8 @@
+prefix=/home/shane/TonyPi_ws/install
+
+Name: r2d2
+Description: Description of r2d2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
